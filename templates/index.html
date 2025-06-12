@@ -1,1 +1,26 @@
 {% extends 'base.html' %}
+
+{% block pokemon_item %}
+{% for row in pokemon_df.itertuples(index=False) %}
+<div class="pokemon_item">
+    <img src="{{ row.name | image_match  }}" loading="lazy" poster="nav_logo/pokeball.png"/>
+    <div class="pokemon_id">
+        {{ "#%04d"|format(row.number) }}
+    </div>
+    <div class="pokemon_name">
+        {{ row.name }}
+    </div>
+    {% if not row.type1 | is_empty %}
+    <div class="pokemon_type">
+        {{ row.type1 | type_badge | safe}}
+    </div>
+    {% endif %}
+
+    {% if not row.type2 | is_empty %}
+    <div class="pokemon_type">
+        {{ row.type2 | type_badge | safe }}
+    </div>
+    {% endif %}
+</div>
+{% endfor %}
+{% endblock %}
