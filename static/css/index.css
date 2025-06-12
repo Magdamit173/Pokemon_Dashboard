@@ -162,6 +162,10 @@ hr {
     width: 150px;
     min-height: 220px;
 }
+.pokemon_item:hover {
+    scale: 1.1;
+    transition: all .2s ease;
+}
 
 .pokemon_item > img {
     margin: 0 auto;
