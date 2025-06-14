@@ -9,10 +9,10 @@ import re
 from itertools import permutations
 
 alternative_sprite = "nav_logo/pokeball.png"
-template_folder = "templates"
+template_folder = "templates/"
 csv_file = "static/pokemon.csv"
 static_folder = "static"
-sprite_folder = f"{static_folder}/pokemon_sprites"
+sprite_folder = f"{static_folder}/pokemon"
 
 app = Flask(__name__, template_folder=template_folder, static_folder="static", static_url_path="/")
 

@@ -5,26 +5,61 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (!search_nav) return
 
-    const imageObserver = new IntersectionObserver((entries, observer) => {
+    // Lazy load images
+    const imageObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target
-                img.src = img.dataset.src
-                img.removeAttribute("data-src")
-                observer.unobserve(img)
-            }
+            if (!entry.isIntersecting) return
+            const img = entry.target
+            img.src = img.dataset.src
+            img.removeAttribute("data-src")
+            imageObserver.unobserve(img)
         })
     })
 
     lazyImages.forEach(img => imageObserver.observe(img))
 
-    search_nav.addEventListener("input", (e) => {
-        const searchValue = e.target.value.trim().toLowerCase()
-        console.log(searchValue)
+    let currentSearch = ""
+    let currentTypes = new Array()
 
+    const filterPokemon = () => {
         pokemon_items.forEach(item => {
-            const itemText = item.children[2]?.textContent?.trim()?.toLowerCase() || ""
-            item.style.display = searchValue.length === 0 || itemText.includes(searchValue) ? "grid" : "none"
+            const number = item.children[1]?.textContent?.trim()?.toLowerCase() || ""
+            const name = item.children[2]?.textContent?.trim()?.toLowerCase() || ""
+            const type1 = item.children[3]?.textContent?.trim()?.toLowerCase() || ""
+            const type2 = item.children[4]?.textContent?.trim()?.toLowerCase() || ""
+
+            const matchesSearch = name.includes(currentSearch) || number.includes(currentSearch)
+
+            const matchesType = (() => {
+                if (currentTypes.length === 0) return true
+                if (currentTypes.length === 1) {
+                    return (
+                        (currentTypes.includes(type1) && !type2) ||
+                        (currentTypes.includes(type2) && !type1)
+                    )
+                }
+                if (currentTypes.length === 2) {
+                    return currentTypes.includes(type1) && currentTypes.includes(type2)
+                }
+                return false
+            })()
+
+            item.style.display = matchesType && matchesSearch ? "grid" : "none"
         })
+
+    }
+
+    search_nav.addEventListener("input", e => {
+        currentSearch = e.target.value.trim().toLowerCase()
+        filterPokemon()
+    })
+
+    await new MultiSelectTag("pokemon_types", {
+        required: false,
+        placeholder: "Search Types",
+        onChange: selected => {
+            currentTypes = selected.map(item => item.label.toLowerCase())
+            filterPokemon()
+        }
     })
 })

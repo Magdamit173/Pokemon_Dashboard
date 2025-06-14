@@ -1,6 +1,7 @@
-#### Version 0.2.1
+#### Version 0.3
 
-- added search functionality
+- let me rest for an hour
+- added jupyter lab and design.html for testing ui
 
 ---
 
