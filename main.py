@@ -12,7 +12,7 @@ alternative_sprite = "nav_logo/pokeball.png"
 template_folder = "templates/"
 csv_file = "static/pokemon.csv"
 static_folder = "static"
-sprite_folder = f"{static_folder}/pokemon"
+sprite_folder = f"{static_folder}/pokemon_sprites"
 
 app = Flask(__name__, template_folder=template_folder, static_folder="static", static_url_path="/")
 
@@ -58,51 +58,7 @@ def type_badge(pokemon_type):
     return f'<span style="background-color:{color}; padding:2px 6px; border-radius:6px; color:white;">{pokemon_type.capitalize()}</span>'
 
     
-# --------------------------------------------------------------------------
-
-# def clean_and_sort(name):
-#     """Removes numbers, special characters, lowers case, splits by spaces, and sorts words."""
-#     clean_name = ''.join([char for char in name if char.isalnum() or char == " "]).lower().split()
-#     return sorted(clean_name)
-
-# @app.template_filter('image_match')
-# def image_match(pokemon_name):
-#     """Matches Pokémon names with image files, ensuring variants and evolutions are recognized."""
-#     sprite_folder = "static/pokemon_sprites/"
-    
-#     target_words = clean_and_sort(pokemon_name)
-#     best_match = None
-
-#     # First-pass: Strict match
-#     for file in os.listdir(sprite_folder):
-#         filename_clean = clean_and_sort(file.replace(".png", "").replace(".jpg", ""))
-#         if target_words == filename_clean:
-#             best_match = file
-#             break
-
-#     # Second-pass: Soft match (allows extra words in filename)
-#     if not best_match:
-#         for file in os.listdir(sprite_folder):
-#             filename_clean = clean_and_sort(file.replace(".png", "").replace(".jpg", ""))
-#             if all(word in filename_clean for word in target_words):
-#                 best_match = file
-#                 break
-
-#     # Third-pass: Check for evolved forms
-#     if not best_match:
-#         for file in os.listdir(sprite_folder):
-#             filename_clean = clean_and_sort(file.replace(".png", "").replace(".jpg", ""))
-#             if any(word in filename_clean for word in target_words):  # Check if any word exists
-#                 best_match = file
-#                 break
-
-#     # If still no match, return a default placeholder
-#     return f"pokemon_sprites/{best_match}" if best_match else "nav_logo/pokeball.png"
-
-# # Register filter manually
-# app.jinja_env.filters["image_match"] = image_match
-
-# --------------------------------------------------------------------------
+# -------------------------------------------------------------------------
 
 @app.template_filter('image_match')
 def image_match(pokemon_name):
@@ -119,16 +75,16 @@ def image_match(pokemon_name):
                 return f"{sprite_folder}/{original}".removeprefix(static_folder)
             
     return alternative_sprite
-            
-
-    
-
 # Register filter manually
 app.jinja_env.filters["image_match"] = image_match
+
+# -------------------------------------------------------------------------
+
 
 @app.route('/')
 def index():
     pokemon_df = pd.read_csv(csv_file)
+
 
     return render_template("index.html", pokemon_df=pokemon_df)
 

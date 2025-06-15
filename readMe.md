@@ -1,7 +1,6 @@
-#### Version 0.3
+#### Version 0.4
 
-- let me rest for an hour
-- added jupyter lab and design.html for testing ui
+- added a prototype for character specs
 
 ---
 

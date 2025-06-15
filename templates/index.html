@@ -2,25 +2,83 @@
 
 {% block pokemon_item %}
 {% for row in pokemon_df.itertuples(index=False) %}
-<div class="pokemon_item">
-    <img src="{{ row.name | image_match  }}" loading="lazy" poster="nav_logo/pokeball.png"/>
+<div class="pokemon_item"
+    data-national_number="{{ row.national_number }}"
+    data-english_name="{{ row.english_name }}"
+    data-japanese_name="{{ row.japanese_name }}"
+    data-primary_type="{{ row.primary_type }}"
+    data-secondary_type="{{ row.secondary_type }}"
+    data-hp="{{ row.hp }}"
+    data-attack="{{ row.attack }}"
+    data-defense="{{ row.defense }}"
+    data-sp_attack="{{ row.sp_attack }}"
+    data-sp_defense="{{ row.sp_defense }}"
+    data-speed="{{ row.speed }}"
+    data-total="{{ row.hp + row.attack + row.defense + row.sp_attack + row.sp_defense + row.speed }}"
+    data-classification="{{ row.classification }}"
+    data-generation="{{ row.generation }}"
+    data-is_sublegendary="{{ row.is_sublegendary }}"
+    data-is_legendary="{{ row.is_legendary }}"
+    data-is_mythical="{{ row.is_mythical }}"
+    data-percent_male="{{ row.percent_male }}"
+    data-percent_female="{{ row.percent_female }}"
+    data-height_m="{{ row.height_m }}"
+    data-weight_kg="{{ row.weight_kg }}"
+    data-capture_rate="{{ row.capture_rate }}"
+    data-base_egg_steps="{{ row.base_egg_steps }}"
+    data-abilities_0="{{ row.abilities_0 }}"
+    data-abilities_1="{{ row.abilities_1 }}"
+    data-abilities_2="{{ row.abilities_2 }}"
+    data-abilities_hidden="{{ row.abilities_hidden }}"
+    data-against_normal="{{ row.against_normal }}"
+    data-against_fire="{{ row.against_fire }}"
+    data-against_water="{{ row.against_water }}"
+    data-against_electric="{{ row.against_electric }}"
+    data-against_grass="{{ row.against_grass }}"
+    data-against_ice="{{ row.against_ice }}"
+    data-against_fighting="{{ row.against_fighting }}"
+    data-against_poison="{{ row.against_poison }}"
+    data-against_ground="{{ row.against_ground }}"
+    data-against_flying="{{ row.against_flying }}"
+    data-against_psychic="{{ row.against_psychic }}"
+    data-against_bug="{{ row.against_bug }}"
+    data-against_rock="{{ row.against_rock }}"
+    data-against_ghost="{{ row.against_ghost }}"
+    data-against_dragon="{{ row.against_dragon }}"
+    data-against_dark="{{ row.against_dark }}"
+    data-against_steel="{{ row.against_steel }}"
+    data-against_fairy="{{ row.against_fairy }}"
+    data-evochain_0="{{ row.evochain_0 }}"
+    data-evochain_1="{{ row.evochain_1 }}"
+    data-evochain_2="{{ row.evochain_2 }}"
+    data-evochain_3="{{ row.evochain_3 }}"
+    data-evochain_4="{{ row.evochain_4 }}"
+    data-evochain_5="{{ row.evochain_5 }}"
+    data-evochain_6="{{ row.evochain_6 }}"
+    data-gigantamax="{{ row.gigantamax }}"
+    data-mega_evolution="{{ row.mega_evolution }}"
+    data-mega_evolution_alt="{{ row.mega_evolution_alt }}"
+>
+    <img src="{{ row.english_name | image_match }}" loading="lazy" poster="nav_logo/pokeball.png"/>
     <div class="pokemon_id">
-        {{ "#%04d"|format(row.number) }}
+        {{ "#%04d"|format(row.national_number) }}
     </div>
     <div class="pokemon_name">
-        {{ row.name }}
+        {{ row.english_name }}
     </div>
-    {% if not row.type1 | is_empty %}
+    
+    {% if not row.primary_type | is_empty %}
     <div class="pokemon_type">
-        {{ row.type1 | type_badge | safe}}
+        {{ row.primary_type | type_badge | safe }}
     </div>
     {% endif %}
 
-    {% if not row.type2 | is_empty %}
+    {% if not row.secondary_type | is_empty %}
     <div class="pokemon_type">
-        {{ row.type2 | type_badge | safe }}
+        {{ row.secondary_type | type_badge | safe }}
     </div>
     {% endif %}
 </div>
 {% endfor %}
 {% endblock %}
+
