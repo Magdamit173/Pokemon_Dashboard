@@ -89,7 +89,7 @@ def type_badge():
     }
 
     color = color_map.get(pokemon_type, '#777')  # Default gray for unknown types
-    badge_html = f'<span style="background-color:{color}; padding:2px 6px; border-radius:6px; color:white; height: 100%; width: 100%">{pokemon_type.capitalize()}</span>'
+    badge_html = f'<span style="background-color:{color}; padding:2px 6px; border-radius:6px; color:white; height: 100%; width: 100%;">{pokemon_type.capitalize()}</span>'
 
     return badge_html
     

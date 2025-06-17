@@ -1,6 +1,7 @@
-#### Version 0.5
+#### Version 0.5.1
 
 - updated pokemon-dashboard
+- 30% done
 
 ---
 

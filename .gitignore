@@ -8,4 +8,3 @@ env
 # Ignore Jupyter Notebook checkpoints everywhere
 .ipynb_checkpoints/
 **/.ipynb_checkpoints/
-

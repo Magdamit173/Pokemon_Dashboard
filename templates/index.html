@@ -2,7 +2,7 @@
 
 {% block pokemon_item %}
 {% for row in pokemon_df.itertuples(index=False) %}
-<div class="pokemon_item" data-national_number="{{ row.national_number }}" data-english_name="{{ row.english_name }}"
+<div data-nav="pokemon_overview" class="pokemon_item" data-national_number="{{ row.national_number }}" data-english_name="{{ row.english_name }}"
     data-japanese_name="{{ row.japanese_name }}" data-primary_type="{{ row.primary_type }}"
     data-secondary_type="{{ row.secondary_type }}" data-hp="{{ row.hp }}" data-attack="{{ row.attack }}"
     data-defense="{{ row.defense }}" data-sp_attack="{{ row.sp_attack }}" data-sp_defense="{{ row.sp_defense }}"
@@ -104,7 +104,7 @@
 
     <div class="pokemon_over_base divider">
         <div class="pokemon_overview_title">
-            Charizard's Base Stats
+            's Base Stats
         </div>
 
         <hr class="hr1">
@@ -114,6 +114,8 @@
         <hr class="hr5">
         <hr class="hr6">
         <hr class="hr7">
+        <hr class="hr8">
+        <hr class="hr9">
 
         <div class="pokemon_over_label label_attack">Attack</div>
         <div class="pokemon_over_label label_defense">Defense</div>
@@ -131,7 +133,7 @@
         <div class="pokemon_over_value pokemon_overview_spd"></div>
         <div class="pokemon_over_value pokemon_overview_total"></div>
 
-        <img src="/static/pokemon_sprites/0282 Gardevoir Mega.png" alt="" class="pokemon_overview_hexagon">
+        <img src="/static/nav_logo/pokeball.png" alt="" class="pokemon_overview_hexagon">
     </div>
 
     <div class="pokemon_stats_extra divider">

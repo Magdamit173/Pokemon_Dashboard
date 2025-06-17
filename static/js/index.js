@@ -63,10 +63,33 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     })
 
+    // Navigator
+
+
+    const navItems = document.querySelectorAll("[data-nav]")
+    const contentSections = document.querySelectorAll(".pokemon_home, .pokemon_list, .pokemon_dashboard, .pokemon_simulator")
+
+    function updateVisibility(event) {
+        const selectedKey = event.target.getAttribute("data-nav")
+        console.log(selectedKey)
+
+        contentSections.forEach(section => {
+            section.style.display = section.classList.contains(selectedKey) ? "flex" : section.style.display
+        })
+    }
+
+    navItems.forEach(item => {
+        item.addEventListener("click", updateVisibility)
+        item.addEventListener("change", updateVisibility)
+        item.addEventListener("input", updateVisibility)
+    })
+
+
+
 
     // THIS IS CRINGE AS FUCK PLS DONT DO THIS IN THE MY FUTURE SELF XD ----- RV MDM
     document.querySelectorAll(".pokemon_item").forEach(async item => {
-        item.addEventListener("click",async () => {
+        item.addEventListener("click", async () => {
             // Hide the list
             document.querySelector(".pokemon_list").style.display = "none"
 
@@ -84,7 +107,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             // Update overview sections with data
             document.querySelector(".pokemon_overview_name").textContent = pokemonData.english_name
             document.querySelector(".pokemon_overview_description").textContent = `${pokemonData.classification}`
-            document.querySelector(".pokemon_overview_primary_type").innerHTML =  await fetchTypeBadge(pokemonData.primary_type)
+            document.querySelector(".pokemon_overview_primary_type").innerHTML = await fetchTypeBadge(pokemonData.primary_type)
             document.querySelector(".pokemon_overview_secondary_type").innerHTML = await fetchTypeBadge(pokemonData.secondary_type) || "None"
 
             document.querySelector(".pokemon_overview_title").textContent = `${pokemonData.english_name}'s Base Stat`
@@ -140,54 +163,54 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 async function fetchPokemonImage(identifier) {
     try {
-        const response = await fetch(`/image_match?identifier=${encodeURIComponent(identifier)}`);
+        const response = await fetch(`/image_match?identifier=${encodeURIComponent(identifier)}`)
 
-        if (!response.ok) throw new Error("❌ Failed to fetch Pokémon image.");
+        if (!response.ok) throw new Error("❌ Failed to fetch Pokémon image.")
 
         // Read response directly as text
-        const base64Image = await response.text(); 
+        const base64Image = await response.text()
 
-        return base64Image; // Should already be formatted correctly
+        return base64Image // Should already be formatted correctly
     } catch (error) {
-        console.error(error);
-        return null;
+        console.error(error)
+        return null
     }
 }
 
 
 async function fetchPokemonChart(pokemonName) {
     try {
-        console.log(`Fetching chart for: ${pokemonName}`); // Debugging log
+        console.log(`Fetching chart for: ${pokemonName}`) // Debugging log
 
-        const response = await fetch(`/pokemon-chart?pokemon_name=${encodeURIComponent(pokemonName)}`);
+        const response = await fetch(`/pokemon-chart?pokemon_name=${encodeURIComponent(pokemonName)}`)
 
-        if (!response.ok) throw new Error("❌ Failed to fetch Pokémon chart.");
+        if (!response.ok) throw new Error("❌ Failed to fetch Pokémon chart.")
 
         // Read response directly as text since Flask returns a raw base64 string
-        const base64Image = await response.text(); 
+        const base64Image = await response.text()
 
-        return base64Image; // Should already be formatted correctly
+        return base64Image // Should already be formatted correctly
     } catch (error) {
-        console.error(error);
-        return null;
+        console.error(error)
+        return null
     }
 }
 
 async function fetchTypeBadge(pokemonType) {
     try {
-        console.log(`Fetching type badge for: ${pokemonType}`); // Debugging log
+        console.log(`Fetching type badge for: ${pokemonType}`) // Debugging log
 
-        const response = await fetch(`/type-badge?pokemon_type=${encodeURIComponent(pokemonType)}`);
+        const response = await fetch(`/type-badge?pokemon_type=${encodeURIComponent(pokemonType)}`)
 
-        if (!response.ok) throw new Error("❌ Failed to fetch type badge.");
+        if (!response.ok) throw new Error("❌ Failed to fetch type badge.")
 
         // Read response directly as text since Flask returns an HTML-styled badge
-        const badgeHtml = await response.text(); 
+        const badgeHtml = await response.text()
 
-        return badgeHtml; // Already formatted for direct use
+        return badgeHtml // Already formatted for direct use
     } catch (error) {
-        console.error(error);
-        return null;
+        console.error(error)
+        return null
     }
 }
 
