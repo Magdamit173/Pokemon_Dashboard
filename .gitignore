@@ -1,6 +1,11 @@
-env
-*.env
+# Environment and compiled files
 .env
-__pycache__
+*.env
+__pycache__/
 .flaskenv
-.ipynb_checkpoints
+env
+
+# Ignore Jupyter Notebook checkpoints everywhere
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+

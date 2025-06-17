@@ -17,6 +17,7 @@
     /* Nature Green */
     --steel-gray: #5A5A5A;
     /* Neutral Steel Gray */
+    --muted-gold: #B8A44F;
 
     --lavender: lavender;
     --black: black;
@@ -179,8 +180,58 @@ hr {
 
 .pokemon_overview_flex {
     border: solid 1px black;
-    width: 50%;
+    /* width: 50%; */
     justify-self: center;
+}
+
+.pokemon_over_nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pokemon_over_nav * {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 1.5em;
+    flex-grow: 1;
+    border-radius: 10px;
+
+    /* border: solid 1px red; */
+    margin: 1em;
+}
+
+.pokemon_over_nav .left {
+    background-image: url('../svg/left.svg');
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    filter: invert(1);
+    background-color: var(--muted-gold);
+}
+
+.pokemon_over_nav .right {
+    background-image: url('../svg/right.svg');
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    filter: invert(1);
+    background-color: var(--muted-gold);
+}
+
+.pokemon_over_nav .back {
+    background-image: url('../svg/back.svg');
+    background-position: center center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    filter: invert(1);
+    background-color: cyan;
+
 }
 
 .divider {
@@ -191,7 +242,7 @@ hr {
 }
 
 .divider + * {
-    border: solid 1px black;
+    /* border: solid 1px black; */
     padding: 1em 0;
 }
 
@@ -215,14 +266,18 @@ hr {
     align-items: center;
 
     text-align: center;
-
-    border: solid 1px var(--dark-blue);
+    /* border: solid 1px var(--dark-blue); */
 }
-
 
 .pokemon_profile {
     grid-area: profile;
     width: 200px;
+    padding: 1em;
+
+    background-image: url('../background/background_lines.webp'), url('../frame/frame_1.png');
+    background-size: cover, 100% 110%;
+    background-repeat: no-repeat;
+    background-attachment: fixed, local;
 }
 
 .pokemon_overview_name {
@@ -244,6 +299,28 @@ hr {
     flex-grow: 1;
 }
 
+
+
+/* ------------------------------------------------------- */
+.pokemon_over_label {
+    color: white;
+    padding: .7em 0;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    text-shadow: 1px 1px 2px var(--black);
+}
+
+.pokemon_over_value {
+    color: var(--black);
+    padding: .7em 0;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 0 20px 0 20px;
+    border: solid 1px var(--dark-blue);
+    text-shadow: 1px 1px 1px var(--mystic-blue);
+
+}
 
 /* ------------------------------------------------------- */
 
@@ -284,8 +361,12 @@ hr {
     grid-area: hex;
     width: 200px;
 }
+/* ------------------------------------------------------- */
 
-.pokemon_overview_title { grid-area: title; padding: 1em;}
+.pokemon_overview_title { 
+    grid-area: title; padding: 1em;
+    
+}
 
 /* Labels */
 .label_attack { grid-area: label_atk; }
@@ -296,6 +377,15 @@ hr {
 .label_speed { grid-area: label_spd; }
 .label_total { grid-area: label_total; }
 
+.label_attack { background: linear-gradient(135deg, #ff4500, #ff6347); } /* Fiery red for Attack */
+.label_defense { background: linear-gradient(135deg, #4682b4, #1e90ff); } /* Cool blue for Defense */
+.label_hp { background: linear-gradient(135deg, #32cd32, #228b22); } /* Strong green for HP */
+.label_spatk { background: linear-gradient(135deg, #ff69b4, #ff1493); } /* Pinkish tone for Special Attack */
+.label_spdef { background: linear-gradient(135deg, #800080, #9370db); } /* Deep purple for Special Defense */
+.label_speed { background: linear-gradient(135deg, #ffd700, #ffb400); } /* Energetic yellow for Speed */
+.label_total { background: linear-gradient(135deg, #808080, #a9a9a9); } /* Neutral gray for Total stats */
+
+
 /* Overview sections */
 .pokemon_overview_atk { grid-area: over_atk; }
 .pokemon_overview_def { grid-area: over_def; }
@@ -304,6 +394,8 @@ hr {
 .pokemon_overview_sp_def { grid-area: over_sp_def; }
 .pokemon_overview_spd { grid-area: over_spd; }
 .pokemon_overview_total { grid-area: over_total; }
+
+
 
 /* ------------------------------------------------------- */
 
@@ -335,14 +427,20 @@ hr {
 .label_is_legendary { grid-area: label_legendary; }
 .label_is_mythical { grid-area: label_mythical; }
 
+
+.label_classification { background: linear-gradient(135deg, #ff7f50, #ff4500); }
+.label_generation { background: linear-gradient(135deg, #4682b4, #1e90ff); }
+.label_is_sublegendary { background: linear-gradient(135deg, #32cd32, #228b22); }
+.label_is_legendary { background: linear-gradient(135deg, #daa520, #b8860b); }
+.label_is_mythical { background: linear-gradient(135deg, #9370db, #6a5acd); }
+
+
 /* Overview sections */
 .pokemon_overview_classification { grid-area: overview_classification; }
 .pokemon_overview_generation { grid-area: overview_generation; }
 .pokemon_overview_is_sublegendary { grid-area: overview_sublegendary; }
 .pokemon_overview_is_legendary { grid-area: overview_legendary; }
 .pokemon_overview_is_mythical { grid-area: overview_mythical; }
-
-
 
 /* ------------------------------------------------------- */
 
@@ -354,6 +452,14 @@ hr {
 .label_weight_kg { grid-area: label_weight_kg; }
 .label_capture_rate { grid-area: label_capture_rate; }
 .label_base_egg_steps { grid-area: label_base_egg_steps; }
+
+.label_percent_male { background: linear-gradient(135deg, #1e90ff, #4682b4); }
+.label_percent_female { background: linear-gradient(135deg, #ff69b4, #ff1493); }
+.label_height_m { background: linear-gradient(135deg, #2e8b57, #3cb371); }
+.label_weight_kg { background: linear-gradient(135deg, #8b4513, #a52a2a); }
+.label_capture_rate { background: linear-gradient(135deg, #ff4500, #ff6347); }
+.label_base_egg_steps { background: linear-gradient(135deg, #daa520, #ffd700); }
+
 
 /* Overview sections */
 .pokemon_overview_percent_male { grid-area: overview_percent_male; }
@@ -392,6 +498,12 @@ hr {
 .label_abilities_2 { grid-area: label_abilities_2; }
 .label_abilities_hidden { grid-area: label_abilities_hidden; }
 
+.label_abilities_0 { background: linear-gradient(135deg, #4caf50, #2e8b57); } /* Green for first ability */
+.label_abilities_1 { background: linear-gradient(135deg, #2196f3, #1976d2); } /* Blue for second ability */
+.label_abilities_2 { background: linear-gradient(135deg, #ff9800, #f57c00); } /* Orange for third ability */
+.label_abilities_hidden { background: linear-gradient(135deg, #9c27b0, #6a1b9a); } /* Purple for hidden ability */
+
+
 /* Overview sections */
 .pokemon_overview_abilities_0 { grid-area: overview_abilities_0; }
 .pokemon_overview_abilities_1 { grid-area: overview_abilities_1; }
@@ -427,6 +539,15 @@ hr {
 .label_evochain_4 { grid-area: label_evochain_4; }
 .label_evochain_5 { grid-area: label_evochain_5; }
 .label_evochain_6 { grid-area: label_evochain_6; }
+
+.label_evochain_0 { background: linear-gradient(135deg, #4caf50, #2e8b57); } /* Stage 1 - Green */
+.label_evochain_1 { background: linear-gradient(135deg, #2196f3, #1976d2); } /* Stage 2 - Blue */
+.label_evochain_2 { background: linear-gradient(135deg, #ff9800, #f57c00); } /* Stage 3 - Orange */
+.label_evochain_3 { background: linear-gradient(135deg, #9c27b0, #6a1b9a); } /* Stage 4 - Purple */
+.label_evochain_4 { background: linear-gradient(135deg, #f44336, #d32f2f); } /* Stage 5 - Red */
+.label_evochain_5 { background: linear-gradient(135deg, #00bcd4, #0097a7); } /* Stage 6 - Cyan */
+.label_evochain_6 { background: linear-gradient(135deg, #ffeb3b, #fbc02d); } /* Stage 7 - Yellow */
+
 
 /* Overview sections */
 .pokemon_overview_evochain_0 { grid-area: overview_evochain_0; }
@@ -536,6 +657,11 @@ hr {
 .label_gigantamax { grid-area: label_gigantamax; }
 .label_mega_evolution { grid-area: label_mega_evolution; }
 .label_mega_evolution_alt { grid-area: label_mega_evolution_alt; }
+
+.label_gigantamax { background: linear-gradient(135deg, #ff4500, #ff6347); } /* Fiery red for Gigantamax */
+.label_mega_evolution { background: linear-gradient(135deg, #4169e1, #1e90ff); } /* Royal blue for Mega Evolution */
+.label_mega_evolution_alt { background: linear-gradient(135deg, #8a2be2, #9370db); } /* Deep purple for alternate Mega Evolution */
+
 
 /* Overview sections */
 .pokemon_overview_gigantamax { grid-area: overview_gigantamax; }

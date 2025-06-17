@@ -1,6 +1,6 @@
-#### Version 0.4
+#### Version 0.5
 
-- added a prototype for character specs
+- updated pokemon-dashboard
 
 ---
 

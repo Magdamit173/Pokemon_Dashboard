@@ -2,71 +2,41 @@
 
 {% block pokemon_item %}
 {% for row in pokemon_df.itertuples(index=False) %}
-<div class="pokemon_item"
-    data-national_number="{{ row.national_number }}"
-    data-english_name="{{ row.english_name }}"
-    data-japanese_name="{{ row.japanese_name }}"
-    data-primary_type="{{ row.primary_type }}"
-    data-secondary_type="{{ row.secondary_type }}"
-    data-hp="{{ row.hp }}"
-    data-attack="{{ row.attack }}"
-    data-defense="{{ row.defense }}"
-    data-sp_attack="{{ row.sp_attack }}"
-    data-sp_defense="{{ row.sp_defense }}"
+<div class="pokemon_item" data-national_number="{{ row.national_number }}" data-english_name="{{ row.english_name }}"
+    data-japanese_name="{{ row.japanese_name }}" data-primary_type="{{ row.primary_type }}"
+    data-secondary_type="{{ row.secondary_type }}" data-hp="{{ row.hp }}" data-attack="{{ row.attack }}"
+    data-defense="{{ row.defense }}" data-sp_attack="{{ row.sp_attack }}" data-sp_defense="{{ row.sp_defense }}"
     data-speed="{{ row.speed }}"
     data-total="{{ row.hp + row.attack + row.defense + row.sp_attack + row.sp_defense + row.speed }}"
-    data-classification="{{ row.classification }}"
-    data-generation="{{ row.generation }}"
-    data-is_sublegendary="{{ row.is_sublegendary }}"
-    data-is_legendary="{{ row.is_legendary }}"
-    data-is_mythical="{{ row.is_mythical }}"
-    data-percent_male="{{ row.percent_male }}"
-    data-percent_female="{{ row.percent_female }}"
-    data-height_m="{{ row.height_m }}"
-    data-weight_kg="{{ row.weight_kg }}"
-    data-capture_rate="{{ row.capture_rate }}"
-    data-base_egg_steps="{{ row.base_egg_steps }}"
-    data-abilities_0="{{ row.abilities_0 }}"
-    data-abilities_1="{{ row.abilities_1 }}"
-    data-abilities_2="{{ row.abilities_2 }}"
-    data-abilities_hidden="{{ row.abilities_hidden }}"
-    data-against_normal="{{ row.against_normal }}"
-    data-against_fire="{{ row.against_fire }}"
-    data-against_water="{{ row.against_water }}"
-    data-against_electric="{{ row.against_electric }}"
-    data-against_grass="{{ row.against_grass }}"
-    data-against_ice="{{ row.against_ice }}"
-    data-against_fighting="{{ row.against_fighting }}"
-    data-against_poison="{{ row.against_poison }}"
-    data-against_ground="{{ row.against_ground }}"
-    data-against_flying="{{ row.against_flying }}"
-    data-against_psychic="{{ row.against_psychic }}"
-    data-against_bug="{{ row.against_bug }}"
-    data-against_rock="{{ row.against_rock }}"
-    data-against_ghost="{{ row.against_ghost }}"
-    data-against_dragon="{{ row.against_dragon }}"
-    data-against_dark="{{ row.against_dark }}"
-    data-against_steel="{{ row.against_steel }}"
-    data-against_fairy="{{ row.against_fairy }}"
-    data-evochain_0="{{ row.evochain_0 }}"
-    data-evochain_1="{{ row.evochain_1 }}"
-    data-evochain_2="{{ row.evochain_2 }}"
-    data-evochain_3="{{ row.evochain_3 }}"
-    data-evochain_4="{{ row.evochain_4 }}"
-    data-evochain_5="{{ row.evochain_5 }}"
-    data-evochain_6="{{ row.evochain_6 }}"
-    data-gigantamax="{{ row.gigantamax }}"
-    data-mega_evolution="{{ row.mega_evolution }}"
-    data-mega_evolution_alt="{{ row.mega_evolution_alt }}"
->
-    <img src="{{ row.english_name | image_match }}" loading="lazy" poster="nav_logo/pokeball.png"/>
+    data-classification="{{ row.classification }}" data-generation="{{ row.generation }}"
+    data-is_sublegendary="{{ row.is_sublegendary }}" data-is_legendary="{{ row.is_legendary }}"
+    data-is_mythical="{{ row.is_mythical }}" data-percent_male="{{ row.percent_male }}"
+    data-percent_female="{{ row.percent_female }}" data-height_m="{{ row.height_m }}"
+    data-weight_kg="{{ row.weight_kg }}" data-capture_rate="{{ row.capture_rate }}"
+    data-base_egg_steps="{{ row.base_egg_steps }}" data-abilities_0="{{ row.abilities_0 }}"
+    data-abilities_1="{{ row.abilities_1 }}" data-abilities_2="{{ row.abilities_2 }}"
+    data-abilities_hidden="{{ row.abilities_hidden }}" data-against_normal="{{ row.against_normal }}"
+    data-against_fire="{{ row.against_fire }}" data-against_water="{{ row.against_water }}"
+    data-against_electric="{{ row.against_electric }}" data-against_grass="{{ row.against_grass }}"
+    data-against_ice="{{ row.against_ice }}" data-against_fighting="{{ row.against_fighting }}"
+    data-against_poison="{{ row.against_poison }}" data-against_ground="{{ row.against_ground }}"
+    data-against_flying="{{ row.against_flying }}" data-against_psychic="{{ row.against_psychic }}"
+    data-against_bug="{{ row.against_bug }}" data-against_rock="{{ row.against_rock }}"
+    data-against_ghost="{{ row.against_ghost }}" data-against_dragon="{{ row.against_dragon }}"
+    data-against_dark="{{ row.against_dark }}" data-against_steel="{{ row.against_steel }}"
+    data-against_fairy="{{ row.against_fairy }}" data-evochain_0="{{ row.evochain_0 }}"
+    data-evochain_1="{{ row.evochain_1 }}" data-evochain_2="{{ row.evochain_2 }}" data-evochain_3="{{ row.evochain_3 }}"
+    data-evochain_4="{{ row.evochain_4 }}" data-evochain_5="{{ row.evochain_5 }}" data-evochain_6="{{ row.evochain_6 }}"
+    data-gigantamax="{{ row.gigantamax }}" data-mega_evolution="{{ row.mega_evolution }}"
+    data-mega_evolution_alt="{{ row.mega_evolution_alt }}">
+    <img src="{{ row.english_name | image_match }}" loading="lazy" poster="nav_logo/pokeball.png" />
     <div class="pokemon_id">
         {{ "#%04d"|format(row.national_number) }}
     </div>
     <div class="pokemon_name">
         {{ row.english_name }}
     </div>
-    
+
     {% if not row.primary_type | is_empty %}
     <div class="pokemon_type">
         {{ row.primary_type | type_badge | safe }}
@@ -82,3 +52,228 @@
 {% endfor %}
 {% endblock %}
 
+
+
+
+{% block pokemon_overview %}
+
+<div class="pokemon_overview_flex">
+
+    <div class="pokemon_over_nav">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="fill"></div>
+        <div class="back"></div>
+    </div>
+
+    <div class="pokemon_over_intro divider">
+        <img class="pokemon_profile" src="./static/pokemon_sprites/0006 Charizard Gigantamax.png" alt="">
+        <div class="pokemon_overview_name">
+
+        </div>
+        <div class="pokemon_overview_description">
+
+        </div>
+        <div class="pokemon_overview_primary_type">
+
+        </div>
+        <div class="pokemon_overview_secondary_type">
+
+        </div>
+    </div>
+
+    <div class="pokemon_class divider">
+
+        <hr class="hr1">
+        <hr class="hr2">
+        <hr class="hr3">
+        <hr class="hr4">
+
+        <div class="pokemon_over_value pokemon_overview_classification"> </div>
+        <div class="pokemon_over_value pokemon_overview_generation"></div>
+        <div class="pokemon_over_value pokemon_overview_is_sublegendary"></div>
+        <div class="pokemon_over_value pokemon_overview_is_legendary"></div>
+        <div class="pokemon_over_value pokemon_overview_is_mythical"></div>
+
+        <div class="pokemon_over_label label_classification">classification</div>
+        <div class="pokemon_over_label label_generation">generation</div>
+        <div class="pokemon_over_label label_is_sublegendary">sublegendary</div>
+        <div class="pokemon_over_label label_is_legendary">legendary</div>
+        <div class="pokemon_over_label label_is_mythical">mythical</div>
+    </div>
+
+    <div class="pokemon_over_base divider">
+        <div class="pokemon_overview_title">
+            Charizard's Base Stats
+        </div>
+
+        <hr class="hr1">
+        <hr class="hr2">
+        <hr class="hr3">
+        <hr class="hr4">
+        <hr class="hr5">
+        <hr class="hr6">
+        <hr class="hr7">
+
+        <div class="pokemon_over_label label_attack">Attack</div>
+        <div class="pokemon_over_label label_defense">Defense</div>
+        <div class="pokemon_over_label label_hp">HP</div>
+        <div class="pokemon_over_label label_spatk">Sp. Atk.</div>
+        <div class="pokemon_over_label label_spdef">Sp. Def.</div>
+        <div class="pokemon_over_label label_speed">Speed</div>
+        <div class="pokemon_over_label label_total">Total</div>
+
+        <div class="pokemon_over_value pokemon_overview_atk"></div>
+        <div class="pokemon_over_value pokemon_overview_def"></div>
+        <div class="pokemon_over_value pokemon_overview_hp"></div>
+        <div class="pokemon_over_value pokemon_overview_sp_atk"></div>
+        <div class="pokemon_over_value pokemon_overview_sp_def"></div>
+        <div class="pokemon_over_value pokemon_overview_spd"></div>
+        <div class="pokemon_over_value pokemon_overview_total"></div>
+
+        <img src="/static/pokemon_sprites/0282 Gardevoir Mega.png" alt="" class="pokemon_overview_hexagon">
+    </div>
+
+    <div class="pokemon_stats_extra divider">
+        <hr class="hr1">
+        <hr class="hr2">
+        <hr class="hr3">
+        <hr class="hr4">
+        <hr class="hr5">
+        <!-- Percent Male -->
+        <div class="pokemon_over_label label_percent_male">Percent Male</div>
+        <div class="pokemon_over_value pokemon_overview_percent_male"></div>
+
+        <!-- Percent Female -->
+        <div class="pokemon_over_label label_percent_female">Percent Female</div>
+        <div class="pokemon_over_value pokemon_overview_percent_female"></div>
+
+        <!-- Height -->
+        <div class="pokemon_over_label label_height_m">Height (m)</div>
+        <div class="pokemon_over_value pokemon_overview_height_m"></div>
+
+        <!-- Weight -->
+        <div class="pokemon_over_label label_weight_kg">Weight (kg)</div>
+        <div class="pokemon_over_value pokemon_overview_weight_kg"></div>
+
+        <!-- Capture Rate -->
+        <div class="pokemon_over_label label_capture_rate">Capture Rate</div>
+        <div class="pokemon_over_value pokemon_overview_capture_rate"></div>
+
+        <!-- Base Egg Steps -->
+        <div class="pokemon_over_label label_base_egg_steps">Base Egg Steps</div>
+        <div class="pokemon_over_value pokemon_overview_base_egg_steps"></div>
+    </div>
+
+    <div class="pokemon_abilities divider">
+
+        <div class="pokemon_overview_title">
+            Abilities
+        </div>
+
+        <hr class="hr1">
+        <hr class="hr2">
+        <hr class="hr3">
+
+        <!-- Ability 0 -->
+        <div class="pokemon_over_label label_abilities_0">Ability 0</div>
+        <div class="pokemon_over_value pokemon_overview_abilities_0"></div>
+
+        <!-- Ability 1 -->
+        <div class="pokemon_over_label label_abilities_1">Ability 1</div>
+        <div class="pokemon_over_value pokemon_overview_abilities_1"></div>
+
+        <!-- Ability 2 -->
+        <div class="pokemon_over_label label_abilities_2">Ability 2</div>
+        <div class="pokemon_over_value pokemon_overview_abilities_2"></div>
+
+        <!-- Hidden Ability -->
+        <div class="pokemon_over_label label_abilities_hidden">Hidden Ability</div>
+        <div class="pokemon_over_value pokemon_overview_abilities_hidden"></div>
+    </div>
+    <div class="pokemon_evochain divider">
+
+        <div class="pokemon_overview_title">
+            Evolution Chain
+        </div>
+
+
+        <hr class="hr1">
+        <hr class="hr2">
+        <hr class="hr3">
+        <hr class="hr4">
+        <hr class="hr5">
+        <hr class="hr6">
+
+        <div class="pokemon_over_label label_evochain_0">Evolution Stage 0</div>
+        <div class="pokemon_over_value pokemon_overview_evochain_0"></div>
+
+        <div class="pokemon_over_label label_evochain_1">Evolution Stage 1</div>
+        <div class="pokemon_over_value pokemon_overview_evochain_1"></div>
+
+        <div class="pokemon_over_label label_evochain_2">Evolution Stage 2</div>
+        <div class="pokemon_over_value pokemon_overview_evochain_2"></div>
+
+        <div class="pokemon_over_label label_evochain_3">Evolution Stage 3</div>
+        <div class="pokemon_over_value pokemon_overview_evochain_3"></div>
+
+        <div class="pokemon_over_label label_evochain_4">Evolution Stage 4</div>
+        <div class="pokemon_over_value pokemon_overview_evochain_4"></div>
+
+        <div class="pokemon_over_label label_evochain_5">Evolution Stage 5</div>
+        <div class="pokemon_over_value pokemon_overview_evochain_5"></div>
+
+        <div class="pokemon_over_label label_evochain_6">Evolution Stage 6</div>
+        <div class="pokemon_over_value pokemon_overview_evochain_6"></div>
+    </div>
+    <div class="pokemon_type_resistances divider">
+
+        <div class="pokemon_overview_title">
+            Type Resistances
+        </div>
+
+        <hr class="hr1">
+        <hr class="hr2">
+        <hr class="hr3">
+        <hr class="hr4">
+        <hr class="hr5">
+        <hr class="hr6">
+        <hr class="hr7">
+        <hr class="hr8">
+        <hr class="hr9">
+        
+        {% set types = ["Normal", "Fire", "Water", "Electric", "Grass", "Ice", "Fighting",
+        "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock",
+        "Ghost", "Dragon", "Dark", "Steel", "Fairy"] %}
+
+        {% for type in types %}
+        <div class="pokemon_over_label label_against_{{ type|lower }}">
+            {{ type | type_badge | safe }}
+        </div>
+        <div class="pokemon_over_value pokemon_overview_against_{{ type|lower }}"></div>
+        {% endfor %}
+
+    </div>
+    <div class="pokemon_special_forms divider">
+
+        <div class="pokemon_overview_title">
+            Special Forms
+        </div>
+
+        <hr class="hr1">
+        <hr class="hr2">
+        <hr class="hr3">
+
+        <div class="pokemon_over_label label_gigantamax">Gigantamax</div>
+        <div class="pokemon_over_value pokemon_overview_gigantamax"></div>
+
+        <div class="pokemon_over_label label_mega_evolution">Mega Evolution</div>
+        <div class="pokemon_over_value pokemon_overview_mega_evolution"></div>
+
+        <div class="pokemon_over_label label_mega_evolution_alt">Mega Evolution (Alt)</div>
+        <div class="pokemon_over_value pokemon_overview_mega_evolution_alt"></div>
+    </div>
+
+</div>
+
+{% endblock %}

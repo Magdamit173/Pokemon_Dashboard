@@ -65,8 +65,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     // THIS IS CRINGE AS FUCK PLS DONT DO THIS IN THE MY FUTURE SELF XD ----- RV MDM
-    document.querySelectorAll(".pokemon_item").forEach(item => {
-        item.addEventListener("click", () => {
+    document.querySelectorAll(".pokemon_item").forEach(async item => {
+        item.addEventListener("click",async () => {
             // Hide the list
             document.querySelector(".pokemon_list").style.display = "none"
 
@@ -76,11 +76,16 @@ document.addEventListener("DOMContentLoaded", async () => {
             // Extract Pokémon data attributes
             const pokemonData = item.dataset
 
+            // Pokemon Profile
+
+            document.querySelector(".pokemon_profile").src = await fetchPokemonImage(pokemonData.english_name)
+            document.querySelector(".pokemon_overview_hexagon").src = await fetchPokemonChart(pokemonData.english_name)
+
             // Update overview sections with data
             document.querySelector(".pokemon_overview_name").textContent = pokemonData.english_name
             document.querySelector(".pokemon_overview_description").textContent = `${pokemonData.classification}`
-            document.querySelector(".pokemon_overview_primary_type").textContent = pokemonData.primary_type
-            document.querySelector(".pokemon_overview_secondary_type").textContent = pokemonData.secondary_type || "None"
+            document.querySelector(".pokemon_overview_primary_type").innerHTML =  await fetchTypeBadge(pokemonData.primary_type)
+            document.querySelector(".pokemon_overview_secondary_type").innerHTML = await fetchTypeBadge(pokemonData.secondary_type) || "None"
 
             document.querySelector(".pokemon_overview_title").textContent = `${pokemonData.english_name}'s Base Stat`
             document.querySelector(".pokemon_overview_hp").textContent = `${pokemonData.hp}`
@@ -131,4 +136,58 @@ document.addEventListener("DOMContentLoaded", async () => {
     })
 
 })
+
+
+async function fetchPokemonImage(identifier) {
+    try {
+        const response = await fetch(`/image_match?identifier=${encodeURIComponent(identifier)}`);
+
+        if (!response.ok) throw new Error("❌ Failed to fetch Pokémon image.");
+
+        // Read response directly as text
+        const base64Image = await response.text(); 
+
+        return base64Image; // Should already be formatted correctly
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+
+async function fetchPokemonChart(pokemonName) {
+    try {
+        console.log(`Fetching chart for: ${pokemonName}`); // Debugging log
+
+        const response = await fetch(`/pokemon-chart?pokemon_name=${encodeURIComponent(pokemonName)}`);
+
+        if (!response.ok) throw new Error("❌ Failed to fetch Pokémon chart.");
+
+        // Read response directly as text since Flask returns a raw base64 string
+        const base64Image = await response.text(); 
+
+        return base64Image; // Should already be formatted correctly
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
+
+async function fetchTypeBadge(pokemonType) {
+    try {
+        console.log(`Fetching type badge for: ${pokemonType}`); // Debugging log
+
+        const response = await fetch(`/type-badge?pokemon_type=${encodeURIComponent(pokemonType)}`);
+
+        if (!response.ok) throw new Error("❌ Failed to fetch type badge.");
+
+        // Read response directly as text since Flask returns an HTML-styled badge
+        const badgeHtml = await response.text(); 
+
+        return badgeHtml; // Already formatted for direct use
+    } catch (error) {
+        console.error(error);
+        return null;
+    }
+}
 
