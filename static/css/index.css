@@ -33,6 +33,26 @@
     src: url('../fonts/Roboto/static/Roboto-Black.ttf');
 }
 
+/* WebKit-based browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #001f3f; /* Dark mystic blue */
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0074cc; /* Bright mystic blue */
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #005ba1; /* Slightly darker when hovered */
+}
+
+
 
 * {
     padding: 0px;
@@ -40,6 +60,11 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 
+}
+
+.iframe {
+    width: 100%;
+    height: calc(100dvh - 150px);
 }
 
 .pokemon_font {
@@ -56,6 +81,7 @@ body {
 
     background-color: var(--dark-blue);
     color: var(--black);
+    overflow-x: hidden;
 }
 
 .arcticle {
@@ -159,8 +185,8 @@ hr {
     border-radius: 10px;
 }
 
-.pokemon_list, .pokemon_overview, .pokemon_home, .pokemon_dashboard {
-    display: flex;
+.pokemon_home, .pokemon_list, .pokemon_dashboard, .pokemon_overview, .pokemon_simulator {
+    display: none;
     justify-content: center;
     align-items: start;
     flex-wrap: wrap;
@@ -168,6 +194,10 @@ hr {
 
     height: calc(100dvh - 150px);
     overflow-y: scroll;
+}
+
+.pokemon_home {
+    display: flex;
 }
 
 .pokemon_overview {
@@ -773,4 +803,188 @@ hr {
 .pokemon_item>div:nth-child(4),
 .pokemon_item>div:nth-child(5) {
     grid-column: span 1;
+}
+
+
+/* ------------------------------------------------------- */
+/* ------------------------------------------------------- */
+/* ------------------------------------------------------- */
+
+/* General Styles */
+.pokemon_home {
+    font-family: 'Segoe UI Emoji', Verdana, sans-serif;
+    color: white;
+    text-align: center;
+    padding: 40px;
+    max-width: 100%;
+    background: url('../background/background_lines.webp');
+}
+
+/* Intro Section */
+.intro {
+    padding: 30px;
+    background: linear-gradient(135deg, #ff9800, #ffcc80);
+    border-radius: 10px;
+    box-shadow: 0px 6px 12px rgba(255, 165, 0, 0.4);
+}
+
+.intro h1 {
+    font-size: 2rem;
+}
+
+.intro p {
+    font-size: 1.2rem;
+}
+
+.home-banner {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* Features Section */
+.features {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+}
+
+.features h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.features ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.features li {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+
+/* Image Gallery */
+.gallery {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(30, 144, 255, 0.3);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(30, 144, 255, 0.5);
+}
+
+.gallery h2 {
+    font-size: 1.8rem;
+}
+
+.image-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.image-container img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-container img:hover {
+    transform: scale(1.1);
+}
+
+/* FAQ Section */
+.faq {
+    margin-top: 40px;
+    padding: 20px;
+    background: rgba(50, 50, 50, 0.6);
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.3);
+}
+
+.faq h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.faq-item {
+    background: rgba(255, 165, 0, 0.2);
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+}
+
+.faq-item h3 {
+    font-size: 1.5rem;
+}
+
+.faq-item p {
+    font-size: 1.2rem;
+}
+
+/* Call to Action */
+.cta {
+    margin-top: 40px;
+    padding: 30px;
+    background: linear-gradient(135deg, #0074cc, #00c3ff);
+    border-radius: 10px;
+    box-shadow: 0px 6px 12px rgba(30, 144, 255, 0.4);
+}
+
+.cta h2 {
+    font-size: 1.8rem;
+}
+
+.cta p {
+    font-size: 1.2rem;
+}
+
+.cta button {
+    padding: 12px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background: #0074cc;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.cta button:hover {
+    background: #005ba1;
+}
+
+/* Creator Credits */
+.creator-credits {
+    font-size: 0.7em;
+    color: orange;
+    text-shadow: 1px 1px 1px black;
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, rgba(255, 165, 0, 0.3), rgba(255, 255, 255, 0.16));
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(255, 165, 0, 0.3);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .image-container img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .cta button {
+        font-size: 1rem;
+        padding: 10px 15px;
+    }
 }

@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 
+
 {% block pokemon_item %}
 {% for row in pokemon_df.itertuples(index=False) %}
-<div data-nav="pokemon_overview" class="pokemon_item" data-national_number="{{ row.national_number }}" data-english_name="{{ row.english_name }}"
-    data-japanese_name="{{ row.japanese_name }}" data-primary_type="{{ row.primary_type }}"
-    data-secondary_type="{{ row.secondary_type }}" data-hp="{{ row.hp }}" data-attack="{{ row.attack }}"
-    data-defense="{{ row.defense }}" data-sp_attack="{{ row.sp_attack }}" data-sp_defense="{{ row.sp_defense }}"
-    data-speed="{{ row.speed }}"
+<div data-nav="pokemon_overview" class="pokemon_item" data-national_number="{{ row.national_number }}"
+    data-english_name="{{ row.english_name }}" data-japanese_name="{{ row.japanese_name }}"
+    data-primary_type="{{ row.primary_type }}" data-secondary_type="{{ row.secondary_type }}" data-hp="{{ row.hp }}"
+    data-attack="{{ row.attack }}" data-defense="{{ row.defense }}" data-sp_attack="{{ row.sp_attack }}"
+    data-sp_defense="{{ row.sp_defense }}" data-speed="{{ row.speed }}"
     data-total="{{ row.hp + row.attack + row.defense + row.sp_attack + row.sp_defense + row.speed }}"
     data-classification="{{ row.classification }}" data-generation="{{ row.generation }}"
     data-is_sublegendary="{{ row.is_sublegendary }}" data-is_legendary="{{ row.is_legendary }}"
@@ -29,7 +30,7 @@
     data-evochain_4="{{ row.evochain_4 }}" data-evochain_5="{{ row.evochain_5 }}" data-evochain_6="{{ row.evochain_6 }}"
     data-gigantamax="{{ row.gigantamax }}" data-mega_evolution="{{ row.mega_evolution }}"
     data-mega_evolution_alt="{{ row.mega_evolution_alt }}">
-    <img src="{{ row.english_name | image_match }}" loading="lazy" poster="nav_logo/pokeball.png" />
+    <img src="{{ row.english_name | image_match }}" loading="lazy" poster="static/nav_logo/pokeball.png" />
     <div class="pokemon_id">
         {{ "#%04d"|format(row.national_number) }}
     </div>
@@ -63,7 +64,7 @@
         <div class="left"></div>
         <div class="right"></div>
         <div class="fill"></div>
-        <div class="back"></div>
+        <div class="back" data-nav="pokemon_list"></div>
     </div>
 
     <div class="pokemon_over_intro divider">
@@ -243,7 +244,7 @@
         <hr class="hr7">
         <hr class="hr8">
         <hr class="hr9">
-        
+
         {% set types = ["Normal", "Fire", "Water", "Electric", "Grass", "Ice", "Fighting",
         "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock",
         "Ghost", "Dragon", "Dark", "Steel", "Fairy"] %}
@@ -277,5 +278,20 @@
     </div>
 
 </div>
+
+{% endblock %}
+
+{% block pokemon_dashboard %}
+
+<iframe class="iframe" src="iframe/capture_rate.html"></iframe>
+<iframe class="iframe" src="iframe/heatmap.html"></iframe>
+<iframe class="iframe" src="iframe/speed_vs_attack.html"></iframe>
+<iframe class="iframe" src="iframe/stats_distribution.html"></iframe>
+<iframe class="iframe" src="iframe/type_distribution.html"></iframe>
+
+{% endblock %}
+{% block pokemon_simulator %}
+
+<iframe class="iframe" src="iframe/battle_simulator.html"></iframe>
 
 {% endblock %}

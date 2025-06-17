@@ -26,6 +26,7 @@
 
     <link rel="stylesheet" href="css/multi-select-tag.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/intro.css">
 
     <script async defer src="js/index.js"></script>
     <script async defer src="js/multi-select-tag.js"></script>
@@ -33,13 +34,52 @@
 </head>
 
 <body>
+
+    <!-- <div class="intro-overlay" id="introOverlay">
+        <div class="content-wrapper">
+            <div class="dashboard-content">
+                <div class="arcticle">
+                    <div class="home">
+                        <section class="header-banner">
+                            <h1>Welcome&nbsp;to the&nbsp;Pokémon Dashboard!⚡</h1>
+                            <p>Explore Pokémon stats, abilities, and battle strategies.</p>
+                            <div><button class="explore-btn" id="closeIntro">Start Exploring</button></div>
+                        </section>
+
+                        <section class="home-features">
+                            <div class="feature-card">
+                                <img src="../intro_jpg/pokeball.png" alt="Pokédex">
+                                <h3>Pokédex</h3>
+                                <p>Browse all Pokémon and their stats.</p>
+                            </div>
+
+                            <div class="feature-card">
+                                <img src="../intro_jpg/lightning.jpg" alt="Types">
+                                <h3>Types</h3>
+                                <p>Check Pokémon type effectiveness.</p>
+                            </div>
+
+                            <div class="feature-card">
+                                <img src="../intro_jpg/pokeball.jpg" alt="Battle">
+                                <h3>Battle Simulator</h3>
+                                <p>Compare Pokémon stats and plan battles.</p>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
     <div class="content-wrapper">
         <nav class="side_nav">
             <div class="side_nav_logo"></div>
             <input type="text" placeholder="Search" class="search_nav" data-search_nav="" data-nav="pokemon_list">
 
 
-            <select name="pokemon_types" id="pokemon_types" class="pokemon_types" multiple style="width: 85%;" data-nav="pokemon_list">
+            <select name="pokemon_types" id="pokemon_types" class="pokemon_types" multiple style="width: 85%;"
+                data-nav="pokemon_list">
                 <option data-nav="pokemon_list" value="Normal">Normal</option>
                 <option data-nav="pokemon_list" value="Fire">Fire</option>
                 <option data-nav="pokemon_list" value="Water">Water</option>
@@ -72,21 +112,124 @@
             <div class="arcticle">
 
                 <div class="pokemon_header">
+
                 </div>
-                <div class="pokemon_list">
+
+                <div class="pokemon_home">
+                    <div class="pokemon_home">
+                        <!-- Intro Section -->
+                        <section class="intro">
+                            <h1>Welcome to Pokémon Home!</h1>
+                            <p>Your ultimate hub for exploring Pokémon stats, evolutions, battle strategies, and more.
+                            </p>
+                            <img src="./static/images/pokemon-banner.png" alt="Pokémon Home Banner" class="home-banner">
+                        </section>
+
+                        <!-- Features Section -->
+                        <section class="features">
+                            <h2>✨ Key Features</h2>
+                            <ul>
+                                <li>🔍 <strong>Pokédex Explorer</strong> – Search Pokémon stats, abilities, and
+                                    resistances.</li>
+                                <li>⚔️ <strong>Battle Simulations</strong> – Compare Pokémon and visualize matchups.
+                                </li>
+                                <li>📊 <strong>Detailed Analytics</strong> – Heatmaps, stat distribution, and capture
+                                    rates.</li>
+                                <li>🌍 <strong>Evolution Chains</strong> – Discover how Pokémon evolve across
+                                    generations.</li>
+                                <li>🎨 <strong>Interactive UI</strong> – A sleek, dynamic experience for Pokémon
+                                    enthusiasts.</li>
+                                <li>📸 <strong>Pokémon Gallery</strong> – View high-quality images of every Pokémon.
+                                </li>
+                            </ul>
+                        </section>
+
+                        <!-- New Image Gallery Section -->
+                        <section class="gallery">
+                            <h2>🖼️ Pokémon Gallery</h2>
+                            <p>Check out stunning images of your favorite Pokémon!</p>
+                            <div class="image-container">
+                                <img src="/pokemon_sprites/0025 Pikachu.png" alt="Pikachu">
+                                <img src="/pokemon_sprites/0006 Charizard.png">
+                                <img src="/pokemon_sprites/0003 Venusaur.png">
+                                <img src="/pokemon_sprites/0009 Blastoise.png">
+                            </div>
+                        </section>
+
+                        <!-- FAQ Section -->
+                        <section class="faq">
+                            <h2>❓ Frequently Asked Questions</h2>
+
+                            <div class="faq-item">
+                                <h3>🛠️ How do I compare Pokémon stats?</h3>
+                                <p>Select two Pokémon using the dropdown in the <strong>Battle Simulator</strong>, and
+                                    their stats will be visualized dynamically.</p>
+                            </div>
+
+                            <div class="faq-item">
+                                <h3>🔥 What does the battle simulator do?</h3>
+                                <p>It lets you <strong>compare Pokémon stats</strong> and visualizes their strengths and
+                                    weaknesses to help optimize battle strategies.</p>
+                            </div>
+
+                            <div class="faq-item">
+                                <h3>📡 Where does Pokémon data come from?</h3>
+                                <p>All Pokémon data is pulled dynamically from <strong>PokéAPI</strong> and structured
+                                    into interactive visualizations.</p>
+                            </div>
+
+                            <div class="faq-item">
+                                <h3>🌟 Can I see Pokémon evolutions?</h3>
+                                <p>Yes! Check the <strong>Evolution Chain section</strong>, which maps Pokémon
+                                    transformations across generations.</p>
+                            </div>
+
+                            <div class="faq-item">
+                                <h3>🎨 How can I customize Pokémon images?</h3>
+                                <p>You can <strong>upload your own Pokémon artwork</strong> and integrate them directly
+                                    into the gallery section.</p>
+                            </div>
+                        </section>
+
+                        <!-- Call to Action -->
+                        <section class="cta">
+                            <h2>🚀 Start Exploring Now!</h2>
+                            <p>Jump into the Pokémon world and uncover stats, evolutions, battles, and more.</p>
+                            <button data-nav="pokemon_list">Explore Pokédex</button>
+                        </section>
+                    </div>
+
+                </div>
+
+                <div class="pokemon_list" style="display: none;">
                     {% block pokemon_item %}
 
                     {% endblock %}
                 </div>
-                
+
+                <div class="pokemon_dashboard">
+
+                    {% block pokemon_dashboard %}
+
+                    {% endblock %}
+
+                </div>
+
+                <div class="pokemon_simulator">
+
+                    {% block pokemon_simulator %}
+
+                    {% endblock %}
+
+                </div>
+
                 <div class="pokemon_overview">
-                    
+
                     {% block pokemon_overview %}
 
                     {% endblock %}
 
                 </div>
-
             </div>
         </div>
     </div>
