@@ -67,16 +67,24 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 
     const navItems = document.querySelectorAll("[data-nav]")
-    const contentSections = document.querySelectorAll(".pokemon_home, .pokemon_list, .pokemon_dashboard, .pokemon_simulator")
+    const contentSections = document.querySelectorAll(".pokemon_home, .pokemon_list, .pokemon_dashboard, .pokemon_simulator, .pokemon_overview")
 
     function updateVisibility(event) {
-        const selectedKey = event.target.getAttribute("data-nav")
-        console.log(selectedKey)
+        const selectedKey = event.target.getAttribute("data-nav");
+        console.log(selectedKey);
 
         contentSections.forEach(section => {
-            section.style.display = section.classList.contains(selectedKey) ? "flex" : section.style.display
-        })
+            // First, set all sections to "none" to ensure no lingering visibility
+            section.style.display = "none";
+        });
+
+        // Then, only display the selected section
+        const activeSection = document.querySelector(`.${selectedKey}`);
+        if (activeSection) {
+            activeSection.style.display = "flex";
+        }
     }
+
 
     navItems.forEach(item => {
         item.addEventListener("click", updateVisibility)
