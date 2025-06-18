@@ -51,7 +51,7 @@ body {
 .content-wrapper {
     height: 100dvh;
     width: 100dvw;
-    background-image: url("../intro_jpg/200.webp");
+    background-image: url("../pokemon_intro/POKEMON_GIF.gif");
     background-repeat: no-repeat;
     background-size: cover; 
     background-position: center;
