@@ -4,6 +4,7 @@
 {% block pokemon_item %}
 {% for row in pokemon_df.itertuples(index=False) %}
 <div data-nav="pokemon_overview" class="pokemon_item" data-national_number="{{ row.national_number }}"
+    data-description="{{ row.description }}"
     data-english_name="{{ row.english_name }}" data-japanese_name="{{ row.japanese_name }}"
     data-primary_type="{{ row.primary_type }}" data-secondary_type="{{ row.secondary_type }}" data-hp="{{ row.hp }}"
     data-attack="{{ row.attack }}" data-defense="{{ row.defense }}" data-sp_attack="{{ row.sp_attack }}"
@@ -283,15 +284,14 @@
 
 {% block pokemon_dashboard %}
 
-<iframe class="iframe" src="iframe/capture_rate.html"></iframe>
-<iframe class="iframe" src="iframe/heatmap.html"></iframe>
-<iframe class="iframe" src="iframe/speed_vs_attack.html"></iframe>
-<iframe class="iframe" src="iframe/stats_distribution.html"></iframe>
-<iframe class="iframe" src="iframe/type_distribution.html"></iframe>
+<iframe class="iframe" frameBorder="0" src="iframe/stats_distribution.html"></iframe>
+<iframe class="iframe" frameBorder="0" src="iframe/type_distribution.html"></iframe>
+<iframe class="iframe" frameBorder="0" src="iframe/speed_vs_attack.html"></iframe>
+<iframe class="iframe" frameBorder="0" src="iframe/heatmap.html"></iframe>
+<iframe class="iframe" frameBorder="0" src="iframe/gender.html"></iframe>
+<iframe class="iframe" frameBorder="0" src="iframe/capture_rate.html"></iframe>
+<iframe class="iframe" frameBorder="0" src="iframe/base_egg_steps.html"></iframe>
+<iframe class="iframe" src="iframe/heatmap.html" width="100%" height="100%" style="border: none;"></iframe>
 
-{% endblock %}
-{% block pokemon_simulator %}
-
-<iframe class="iframe" src="iframe/battle_simulator.html"></iframe>
 
 {% endblock %}

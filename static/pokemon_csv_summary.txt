@@ -1,0 +1,74 @@
+
+# General Attributes
+hp
+attack	
+defense	
+sp_attack
+sp_defense 
+speed
+
+total = sum(hp, attack, defense, sp_attack, sp_defense, speed)
+------------------------
+classification
+generation
+is_sublegendary
+is_legendary
+is_mythical
+----------------------
+
+percent_male
+percent_female
+
+height_m
+weight_kg
+
+capture_rate
+base_egg_steps
+
+
+----------------------
+
+
+# Abilities
+
+abilities_0
+abilities_1
+abilities_2
+abilities_hidden
+
+
+----------------------
+
+# Type Resistances
+against_normal
+against_fire
+against_water
+against_electric
+against_grass
+against_ice
+against_fighting
+against_poison
+against_ground
+against_flying
+against_psychic
+against_bug
+against_rock
+against_ghost
+against_dragon
+against_dark
+against_steel
+against_fairy
+
+# Evolution Chain
+evochain_0
+evochain_1
+evochain_2
+evochain_3
+evochain_4
+evochain_5
+evochain_6
+
+# Special Forms
+gigantamax
+mega_evolution
+mega_evolution_alt

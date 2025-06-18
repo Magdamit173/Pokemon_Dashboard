@@ -1,22 +1,81 @@
-#### Version 1
+🐍 PokéDex Dash Board App – Version 1.1
 
-- 100% done
+A simple Python Dash Board using Flask to serve Pokémon data with sprite support and custom naming fixes.
 
 ---
 
-#### Task Kill:
+🚀 Quick Start
+
+1. Setup Python Environment
+----------------------------------
+python -m venv venv
+venv\Scripts\activate  # or source venv/bin/activate on Linux/Mac
+
+2. Install Required Packages
+----------------------------------
+pip install -r requirements.txt
+
+3. Run the App
+----------------------------------
+python main.py
+
+The server will start at:
+http://localhost:5000
+
+---
+
+🔁 Live Debugging / Auto Refresh
+
+To enable auto-refresh during development, this app uses Live Server (Python-based, not browser plugin).
+
+Install livereload if not yet installed:
+pip install livereload
+
+Then just run as normal:
+python main.py
+
+---
+
+🌐 Share with Groupmates (Tunnel)
+
+Use ngrok to expose your local server:
+ngrok http 5000
+
+---
+
+❌ Free Port / Task Kill
+
+If port 5000 is already in use, free it like this:
+
 netstat -ano | findstr :5000
 taskkill /PID <PID> /F
 
-#### Auto Refresh On Debug:
-Switched to Live Server library (Python).
+(Replace <PID> with the actual process ID)
 
-#### Opening Tunnel for Group Mates:
-ngrok http 5000
+---
 
-#### Naming Errors in pokemon_sprites:
-- Alola → Alolan
-- Blastoise → Blasoise (Yeah, I know... but it must be done)
-- Galar → Galarian
-- Giratina → Giratina Altered Forme
-- (And more... Lazy to document. Good luck, future self!)
+📛 Naming Fixes & Notes
+
+Some sprites need name correction for consistency:
+
+Alola      → Alolan  
+Galar      → Galarian  
+Blastoise  → Blasoise (yes, seriously)  
+Giratina   → Giratina Altered Forme  
+Others     → Too many... good luck, future self
+
+---
+
+📂 Folder Structure (Quick Overview)
+
+static/
+    pokemon_sprites/
+        0001 Bulbasaur.png
+
+templates/
+    base.html
+    index.html
+
+main.py  
+requirements.txt  
+README.md

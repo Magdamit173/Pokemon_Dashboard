@@ -1,5 +1,5 @@
 from livereload import Server
-from flask import Flask, Response, make_response, render_template, url_for, request, jsonify
+from flask import Flask, Response, make_response, render_template, url_for, request, jsonify, redirect
 
 import pandas as pd
 import numpy as np
@@ -16,7 +16,7 @@ alternative_sprite = "nav_logo/pokeball.png"
 template_folder = "templates/"
 csv_file = "static/pokemon.csv"
 static_folder = "static"
-sprite_folder = f"{static_folder}/pokemon"
+sprite_folder = f"{static_folder}/pokemon_sprites"
 
 app = Flask(__name__, template_folder=template_folder, static_folder="static", static_url_path="/")
 
@@ -164,12 +164,26 @@ def pokemon_chart():
         return f"⚠️ Internal Server Error: {str(e)}", 500
 
 
+
+
+# -------------------------------------------------------------------------
+
+@app.route("/introduction")
+def introduction():
+    return render_template("intro.html")
+
+# -------------------------------------------------------------------------
+
+@app.route("/dashboard")
+def dashboard():
+    pokemon_df = pd.read_csv(csv_file)
+    return render_template("index.html", pokemon_df=pokemon_df)
+
 # -------------------------------------------------------------------------
 
 @app.route('/')
 def index():
-    pokemon_df = pd.read_csv(csv_file)
-    return render_template("index.html", pokemon_df=pokemon_df)
+    return redirect(url_for("introduction"))
 
 if __name__ == '__main__':
 

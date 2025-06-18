@@ -6,8 +6,20 @@
     <title>Pokémon Type Effectiveness Table</title>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <style>
-      body {
-        width: 100%;
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    height: auto;
+    max-width: 1280px;
+    aspect-ratio: 16 / 9;
+    margin: 0 auto;
     background-color: #ffffff;
     color: #333;
     font-family: 'Segoe UI Emoji', Verdana, sans-serif;
@@ -16,7 +28,9 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
+    box-sizing: border-box;
 }
+
 
 table.dataframe {
     width: 100%;
