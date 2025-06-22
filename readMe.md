@@ -1,7 +1,13 @@
-🐍 PokéDex Dash Board App – Version 1.1
+🐍 PokéDex Dash Board App – Version 1.3
 
 A simple Python Dash Board using Flask to serve Pokémon data with sprite support and custom naming fixes.
 
+---
+Created by:
+- **Rovic Magdamit (Rv Mdm)**
+- **Justin Montealegre**
+- **Majeed Haque (Seven)** 
+- **James Gabata**
 ---
 
 🚀 Quick Start
